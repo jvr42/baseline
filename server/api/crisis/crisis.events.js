@@ -5,11 +5,11 @@
 'use strict';
 
 var EventEmitter = require('events').EventEmitter;
-var Thing = require('./thing.model');
-var ThingEvents = new EventEmitter();
+var Crisis = require('./crisis.model');
+var CrisisEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-ThingEvents.setMaxListeners(0);
+CrisisEvents.setMaxListeners(0);
 
 // Model events
 var events = {
@@ -20,14 +20,14 @@ var events = {
 // Register the event emitter to the model events
 for (var e in events) {
   var event = events[e];
-  Thing.schema.post(e, emitEvent(event));
+  Crisis.schema.post(e, emitEvent(event));
 }
 
 function emitEvent(event) {
   return function(doc) {
-    ThingEvents.emit(event + ':' + doc._id, doc);
-    ThingEvents.emit(event, doc);
+    CrisisEvents.emit(event + ':' + doc._id, doc);
+    CrisisEvents.emit(event, doc);
   }
 }
 
-module.exports = ThingEvents;
+module.exports = CrisisEvents;

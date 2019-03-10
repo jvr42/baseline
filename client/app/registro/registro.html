@@ -1,0 +1,52 @@
+<navbar></navbar>
+
+<div class="container">
+	<div class="table-responsive">
+	<table class="table">
+		<tr>
+			<th>Fecha</th>
+			<th>Duración</th>
+			<th>Saturación</th>
+			<th>SOS</th>
+			<th>Oxígeno</th>
+			<th>Opciones</th>
+		</tr>
+		<tr ng-repeat="item in crisis">
+			<td>{{item.hora | date: 'dd/MM/yyyy h:mm a'}}</td>
+			<td>{{item.duracion}}m</td>
+			<td>{{item.saturacion}}%</td>
+			<td ng-if="item.medicacion == 1">Si</td>
+			<td ng-if="item.medicacion == 0">No</td>
+			<td ng-if="item.oxigeno == 1">Si</td>
+			<td ng-if="item.oxigeno == 0">No</td>
+			<td>
+				<button class="btn btn-warning glyphicon glyphicon-pencil" ng-click="edit()"></button>
+				<button class="btn btn-danger glyphicon glyphicon-trash" ng-click="delete(item._id)"></button>
+				<button class="btn btn-primary glyphicon glyphicon-search" ng-click="view(item)"></button>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<footer></footer>
+
+
+<script type="text/ng-template" id="viewModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{item.hora | date: 'dd/MM/yyyy h:mm a'}}</h3>
+    </div>
+    <div class="modal-body">
+    	<b><u>Detalles de la crisis:</u></b> <br><br>
+    	<div><b>Duracion:</b> {{item.duracion}}m</div>
+    	<div><b>Saturacion:</b> {{item.saturacion}}%</div>
+		<div ng-if="item.medicacion == 1"><b>Medicacion:</b> Si</div>
+		<div ng-if="item.medicacion == 0"><b>Medicacion:</b> No</div>
+		<div ng-if="item.oxigeno == 1"><b>Oxigeno:</b> Si</div>
+		<div ng-if="item.oxigeno == 0"><b>Oxigeno:</b> No</div><br>
+		<div><b>Sintomas:</b> {{item.sintomas}}</div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cerrar</button>
+    </div>
+</script>

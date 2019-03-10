@@ -3,8 +3,12 @@
 angular.module('baselineApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
+      'title': 'Inicio',
       'link': '/'
+    },
+    {
+      'title': 'Registro',
+      'link': 'registro'
     }];
 
     $scope.isCollapsed = true;

@@ -1,3 +1,51 @@
 <navbar></navbar>
-
+<div class="container">
+  <table class="table" border="0">
+    <tr>
+      <td class="nombre">
+        <div style="margin-top: 37px">Hora:</div>
+      </td>
+      <td>
+        <timepicker ng-model="data.hora">
+      </td>
+    </tr>
+    <tr>
+      <td class="nombre">Duración:</td>
+      <td><input type="text" class="form-control" ng-model="data.duracion"></td>
+    </tr>
+    <tr>
+      <td class="nombre">Saturación:</td>
+      <td><input type="text" class="form-control" ng-model="data.saturacion"></td>
+    </tr>
+    <tr>
+      <td class="nombre">Medicación:</td>
+      <td>
+        <button ng-if="data.medicacion == 1" type="button" class="btn btn-success" ng-model="data.medicacion" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+          SOS
+        </button>
+        <button ng-if="data.medicacion == 0" type="button" class="btn btn-danger" ng-model="data.medicacion" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+          SOS
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="nombre">Oxígeno:</td>
+      <td>
+        <button ng-if="data.oxigeno == 1" type="button" class="btn btn-success" ng-model="data.oxigeno" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+          O2
+        </button>
+        <button ng-if="data.oxigeno == 0" type="button" class="btn btn-danger" ng-model="data.oxigeno" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+          O2
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="nombre">Sintomas:</td>
+      <td><textarea class="form-control" rows="10" ng-model="data.sintomas"></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><button class="btn-lg btn-warning" ng-click="ingresar()">INGRESAR</button></td>
+    </tr>
+  </table>
+</div>
 <footer></footer>

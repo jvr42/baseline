@@ -10,7 +10,7 @@
 'use strict';
 
 var _ = require('lodash');
-var Thing = require('./thing.model');
+var Crisis = require('./crisis.model');
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -61,41 +61,41 @@ function removeEntity(res) {
 
 // Gets a list of Things
 exports.index = function(req, res) {
-  Thing.findAsync()
+  Crisis.findAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
 
-// Gets a single Thing from the DB
+// Gets a single Crisis from the DB
 exports.show = function(req, res) {
-  Thing.findByIdAsync(req.params.id)
+  Crisis.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
 
-// Creates a new Thing in the DB
+// Creates a new Crisis in the DB
 exports.create = function(req, res) {
-  Thing.createAsync(req.body)
+  Crisis.createAsync(req.body)
     .then(responseWithResult(res, 201))
     .catch(handleError(res));
 };
 
-// Updates an existing Thing in the DB
+// Updates an existing Crisis in the DB
 exports.update = function(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  Thing.findByIdAsync(req.params.id)
+  Crisis.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
 
-// Deletes a Thing from the DB
+// Deletes a Crisis from the DB
 exports.destroy = function(req, res) {
-  Thing.findByIdAsync(req.params.id)
+  Crisis.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
